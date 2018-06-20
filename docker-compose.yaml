@@ -1,0 +1,24 @@
+---
+version: '3.3'
+
+
+services:
+
+  base: &base
+    build: .
+    volumes:
+      - .:/app
+      - "$HOME/.kube:/root/.kube"
+    working_dir: /app
+
+  kubecfg:
+    <<: *base
+    entrypoint: kubecfg
+
+  jsonnet:
+    <<: *base
+    entrypoint: jsonnet
+
+  bash:
+    <<: *base
+    entrypoint: bash
